@@ -1,0 +1,3 @@
+[submodule "royuengine/vendor/glfw"]
+	path = royuengine/vendor/glfw
+	url = https://github.com/TheCherno/glfw

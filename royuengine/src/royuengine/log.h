@@ -1,14 +1,12 @@
 #pragma once
 
-#include <memory>
-
 #include "core.h"
 #include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Royu
 {
-	class ROYUYU_API Log
+	class ROYU_API Log
 	{
 	public:
 		static void init();

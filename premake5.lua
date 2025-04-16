@@ -1,4 +1,4 @@
-workspace "Royu"
+workspace "royuengine"
 	architecture "x64"
 
 	configurations
@@ -13,13 +13,21 @@ workspace "Royu"
 
 outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
+includeDir = {}
+includeDir["glfw"] = "royuengine/vendor/glfw/include"
+
+include "royuengine/vendor/glfw"
+
 project "royuengine" 
 	location "royuengine"
 	kind "SharedLib"
 	language "c++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin_int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "rypch.h"
+	pchsource "royuengine/src/rypch.cpp"
 
 	files
 	{
@@ -27,16 +35,26 @@ project "royuengine"
 		"%{prj.name}/src/**.cpp"
 	}
 
-
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/src",
+		"%{includeDir.glfw}"
+	}
+
+	links
+	{
+		"glfw",
+		"opengl32.lib",
+		"ucrtd.lib",   
+		"msvcrt.lib", 
+    
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0.22621.0"
+		systemversion "latest"
 
 		defines
 		{
@@ -45,8 +63,8 @@ project "royuengine"
 		}
 
 		postbuildcommands {
-			"{MKDIR} \"../bin/" .. outputdir .. "/Sandbox\"",
-			"{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox\""
+			"{MKDIR} \"../bin/" .. outputdir .. "/sandbox\"",
+			"{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/sandbox\""
 }
 
 		filter "configurations:Debug"
@@ -62,13 +80,13 @@ project "royuengine"
 			optimize "On"
 
 
-project "Sandbox"
-	location "Sandbox"
+project "sandbox"
+	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin_int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
@@ -78,19 +96,19 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Royuyu/vendor/spdlog/include",
-		"Royuyu/src"
+		"royuengine/vendor/spdlog/include",
+		"royuengine/src"
 	}
 
 	links
 	{
-		"Royuyu"
+		"royuengine"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0.22621.0"
+		systemversion "latest"
 
 		defines
 		{
