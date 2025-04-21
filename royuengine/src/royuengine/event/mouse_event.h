@@ -20,6 +20,9 @@ namespace Royu
 			return ss.str();
 		}
 
+		float get_x() { return m_MouseX; }
+		float get_y() { return m_MouseY; }
+
 		EVENT_CLASS_TYPE(Mouse_Moved) EVENT_CLASS_CATEGORY(Event_Category_Mouse | Event_Category_Input)
 
 	private:

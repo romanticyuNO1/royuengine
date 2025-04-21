@@ -1,23 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="platform">
-      <UniqueIdentifier>{4A63C33C-3630-1E48-5F49-0CF04B7553D6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="platform\windows">
-      <UniqueIdentifier>{A44FC440-9048-E392-B97A-C817A5D2C29E}</UniqueIdentifier>
-    </Filter>
     <Filter Include="royuengine">
       <UniqueIdentifier>{2AB96C51-1671-AE9E-7F78-87FA6B4F498F}</UniqueIdentifier>
     </Filter>
     <Filter Include="royuengine\event">
       <UniqueIdentifier>{1B026A9E-07FB-88F0-302D-6E751C8568FC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="royuengine\imgui">
+      <UniqueIdentifier>{147EAD9E-0077-CCF0-29A9-B1751501ACFC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="royuengine\platform">
+      <UniqueIdentifier>{DE80711B-4AE2-4E29-D34F-95DB3FB085E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="royuengine\platform\opengl">
+      <UniqueIdentifier>{B2DCD9AA-9EEC-857B-07A6-EA99F3D47414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="royuengine\platform\windows">
+      <UniqueIdentifier>{38C1305E-A4CE-5E44-2DB5-5A2F99C12AFB}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\platform\windows\windows_window.h">
-      <Filter>platform\windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\royuengine.h" />
     <ClInclude Include="src\royuengine\application.h">
       <Filter>royuengine</Filter>
@@ -40,8 +43,23 @@
     <ClInclude Include="src\royuengine\event\mouse_event.h">
       <Filter>royuengine\event</Filter>
     </ClInclude>
+    <ClInclude Include="src\royuengine\imgui\imgui_layer.h">
+      <Filter>royuengine\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\royuengine\layer.h">
+      <Filter>royuengine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\royuengine\layer_stack.h">
+      <Filter>royuengine</Filter>
+    </ClInclude>
     <ClInclude Include="src\royuengine\log.h">
       <Filter>royuengine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\royuengine\platform\opengl\imgui_opengl_renderer.h">
+      <Filter>royuengine\platform\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\royuengine\platform\windows\windows_window.h">
+      <Filter>royuengine\platform\windows</Filter>
     </ClInclude>
     <ClInclude Include="src\royuengine\window.h">
       <Filter>royuengine</Filter>
@@ -49,14 +67,26 @@
     <ClInclude Include="src\rypch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\platform\windows\windows_window.cpp">
-      <Filter>platform\windows</Filter>
-    </ClCompile>
     <ClCompile Include="src\royuengine\application.cpp">
+      <Filter>royuengine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\royuengine\imgui\imgui_layer.cpp">
+      <Filter>royuengine\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\royuengine\layer.cpp">
+      <Filter>royuengine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\royuengine\layer_stack.cpp">
       <Filter>royuengine</Filter>
     </ClCompile>
     <ClCompile Include="src\royuengine\log.cpp">
       <Filter>royuengine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\royuengine\platform\opengl\imgui_opengl_renderer.cpp">
+      <Filter>royuengine\platform\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\royuengine\platform\windows\windows_window.cpp">
+      <Filter>royuengine\platform\windows</Filter>
     </ClCompile>
     <ClCompile Include="src\rypch.cpp" />
   </ItemGroup>

@@ -1,3 +1,9 @@
 [submodule "royuengine/vendor/glfw"]
 	path = royuengine/vendor/glfw
 	url = https://github.com/TheCherno/glfw
+[submodule "royuengine/vendor/spdlog"]
+	path = royuengine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "royuengine/vendor/imgui"]
+	path = royuengine/vendor/imgui
+	url = https://github.com/TheCherno/imgui

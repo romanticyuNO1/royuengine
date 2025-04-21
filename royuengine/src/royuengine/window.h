@@ -21,7 +21,7 @@ namespace Royu
 		}
 	};
 
-	class Window
+	class ROYU_API Window
 	{
 	public:
 		using event_callback_fn = std::function<void(Event&)>;

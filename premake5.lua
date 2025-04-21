@@ -15,8 +15,12 @@ outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
 includeDir = {}
 includeDir["glfw"] = "royuengine/vendor/glfw/include"
+includeDir["glad"] = "royuengine/vendor/glad/include"
+includeDir["imgui"] = "royuengine/vendor/imgui"
 
 include "royuengine/vendor/glfw"
+include "royuengine/vendor/glad"
+include "royuengine/vendor/imgui"
 
 project "royuengine" 
 	location "royuengine"
@@ -37,29 +41,33 @@ project "royuengine"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src",
-		"%{includeDir.glfw}"
+		"royuengine/vendor/spdlog/include",
+		"royuengine/src",
+		"%{includeDir.glfw}",
+		"%{includeDir.glad}",
+		"%{includeDir.imgui}"
 	}
 
 	links
 	{
 		"glfw",
 		"opengl32.lib",
-		"ucrtd.lib",   
-		"msvcrt.lib", 
-    
+		"glad",
+		"imgui",
+		--"ucrtd.lib",   
+		--"msvcrt.lib", 
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "On" 
 		systemversion "latest"
 
 		defines
 		{
 			"RY_PLAYFROM_WINDOWS",
-			"RY_BUILD_DLL"
+			"RY_BUILD_DLL",
+			"GLFW_INCLUDE_NONE",
 		}
 
 		postbuildcommands {
@@ -69,14 +77,17 @@ project "royuengine"
 
 		filter "configurations:Debug"
 			defines "RY_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "RY_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "RY_DIST"
+			buildoptions "/MD"
 			optimize "On"
 
 
@@ -96,13 +107,13 @@ project "sandbox"
 
 	includedirs
 	{
-		"royuengine/vendor/spdlog/include",
-		"royuengine/src"
+		"royuengine/src",
+		"royuengine/vendor/spdlog/include"
 	}
 
 	links
 	{
-		"royuengine"
+		"royuengine",
 	}
 
 	filter "system:windows"
@@ -112,17 +123,20 @@ project "sandbox"
 
 		defines
 		{
-			"RY_PLAYFROM_WINDOWS"
+			"RY_PLAYFROM_WINDOWS",
 		}
 
 		filter "configurations:Debug"
 			defines "RY_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "RY_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "RY_DIST"
+			buildoptions "/MD"
 			optimize "On"

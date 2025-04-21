@@ -7,7 +7,7 @@
 
 namespace Royu
 {
-	class WindowsWindow : Window
+	class WindowsWindow : public Window
 	{
 	public:
 		WindowsWindow(const WindowProps& props);
@@ -22,13 +22,13 @@ namespace Royu
 		void set_v_sync(bool enabled) override;
 		bool is_v_sync() const override;
 
-		void* get_native_window() const override { return m_window; }
+		void* get_native_window() const override { return gl_window; }
 
 	private:
 		virtual void init(const WindowProps& props);
 		virtual void shutdown();
 	private:
-		GLFWwindow* m_window;
+		GLFWwindow* gl_window;
 		//Scope<GraphicsContext> m_Context;
 
 		struct WindowData
@@ -37,6 +37,7 @@ namespace Royu
 			unsigned int width, height;
 			bool v_sync;
 
+			//绑定到GLFWWindow上的回调函数
 			event_callback_fn event_callback;
 		};
 

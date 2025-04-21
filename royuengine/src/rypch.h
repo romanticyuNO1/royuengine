@@ -13,6 +13,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "royuengine/log.h"
+
 #ifdef RY_PLAYFROM_WINDOWS
 	#include<Windows.h>
 #endif

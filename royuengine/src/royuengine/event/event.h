@@ -40,6 +40,8 @@ namespace Royu
 	{
 		friend class EventDispatcher;
 	public:
+		bool m_handled = false; //标记已处理
+
 		virtual EventType get_event_type() const = 0;
 		virtual const char* get_name() const = 0;
 		virtual int get_category_flags() const = 0;
@@ -51,13 +53,12 @@ namespace Royu
 		}
 
 	protected:
-		bool m_handled = false;
 	};
 
 	class EventDispatcher
 	{
 		template<typename T>
-		using event_fn = std::function<bool(T&)>; //return bool 
+		using event_fn = std::function<bool(T&)>; //return bool / input T&
 
 	public:
 		EventDispatcher(Event& event)
@@ -66,12 +67,12 @@ namespace Royu
 		}
 
 		template<typename T>
-		bool Dispatch(event_fn<T> func)
+		bool dispatch(event_fn<T> func)
 		{
 			if (m_event.get_event_type() == T::get_static_type())
 			{
 				//&取地址 *解引用
-				//Event* -> Event派生类* -> *解引用 ->obj
+				//(T*) -> Event派生类* -> *解引用 ->obj
 				m_event.m_handled = func(*(T*)&m_event);
 				return true;
 			}

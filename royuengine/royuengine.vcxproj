@@ -79,19 +79,19 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rypch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RY_PLAYFROM_WINDOWS;RY_BUILD_DLL;RY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RY_PLAYFROM_WINDOWS;RY_BUILD_DLL;GLFW_INCLUDE_NONE;RY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\glfw\include;vendor\glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;ucrtd.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug_windows_x86_64\royuengine\royuengine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -104,15 +104,15 @@ IF EXIST ..\bin\Debug_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /Y 
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rypch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RY_PLAYFROM_WINDOWS;RY_BUILD_DLL;RY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RY_PLAYFROM_WINDOWS;RY_BUILD_DLL;GLFW_INCLUDE_NONE;RY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\glfw\include;vendor\glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -120,7 +120,7 @@ IF EXIST ..\bin\Debug_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /Y 
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;ucrtd.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release_windows_x86_64\royuengine\royuengine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -133,15 +133,15 @@ IF EXIST ..\bin\Release_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rypch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RY_PLAYFROM_WINDOWS;RY_BUILD_DLL;RY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RY_PLAYFROM_WINDOWS;RY_BUILD_DLL;GLFW_INCLUDE_NONE;RY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\glfw\include;vendor\glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -149,7 +149,7 @@ IF EXIST ..\bin\Release_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;ucrtd.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist_windows_x86_64\royuengine\royuengine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -158,7 +158,6 @@ IF EXIST ..\bin\Dist_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /Y /
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\platform\windows\windows_window.h" />
     <ClInclude Include="src\royuengine.h" />
     <ClInclude Include="src\royuengine\application.h" />
     <ClInclude Include="src\royuengine\core.h" />
@@ -167,14 +166,23 @@ IF EXIST ..\bin\Dist_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /Y /
     <ClInclude Include="src\royuengine\event\event.h" />
     <ClInclude Include="src\royuengine\event\key_event.h" />
     <ClInclude Include="src\royuengine\event\mouse_event.h" />
+    <ClInclude Include="src\royuengine\imgui\imgui_layer.h" />
+    <ClInclude Include="src\royuengine\layer.h" />
+    <ClInclude Include="src\royuengine\layer_stack.h" />
     <ClInclude Include="src\royuengine\log.h" />
+    <ClInclude Include="src\royuengine\platform\opengl\imgui_opengl_renderer.h" />
+    <ClInclude Include="src\royuengine\platform\windows\windows_window.h" />
     <ClInclude Include="src\royuengine\window.h" />
     <ClInclude Include="src\rypch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\platform\windows\windows_window.cpp" />
     <ClCompile Include="src\royuengine\application.cpp" />
+    <ClCompile Include="src\royuengine\imgui\imgui_layer.cpp" />
+    <ClCompile Include="src\royuengine\layer.cpp" />
+    <ClCompile Include="src\royuengine\layer_stack.cpp" />
     <ClCompile Include="src\royuengine\log.cpp" />
+    <ClCompile Include="src\royuengine\platform\opengl\imgui_opengl_renderer.cpp" />
+    <ClCompile Include="src\royuengine\platform\windows\windows_window.cpp" />
     <ClCompile Include="src\rypch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -182,6 +190,12 @@ IF EXIST ..\bin\Dist_windows_x86_64\royuengine\royuengine.dll\ (xcopy /Q /E /Y /
   <ItemGroup>
     <ProjectReference Include="vendor\glfw\glfw.vcxproj">
       <Project>{9563977C-819A-980D-2A87-7E10169D140F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\glad\glad.vcxproj">
+      <Project>{DD62977C-C999-980D-7286-7E105E9C140F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
