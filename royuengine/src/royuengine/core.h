@@ -10,6 +10,11 @@
 #error Royu only support Windows!
 #endif 
 
+#ifdef RY_DEBUG
+#define RY_ENABLE_ASSERTS
+#endif 
+
+
 #ifdef RY_ENABLE_ASSERTS
 #define RY_ASSERT(x,...)if(!(x)){RY_ERROR("Assertion Faild {0}",__VA_ARGS__);__debugbreak();}
 #define RY_CORE_ASSERT(x,...)if(!(x)){RY_CORE_ERROR("Assertion Faild {0}",__VA_ARGS__);__debugbreak();}

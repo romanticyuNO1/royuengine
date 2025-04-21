@@ -26,6 +26,7 @@ project "royuengine"
 	location "royuengine"
 	kind "SharedLib"
 	language "c++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin_int/" .. outputdir .. "/%{prj.name}")
@@ -60,7 +61,6 @@ project "royuengine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On" 
 		systemversion "latest"
 
 		defines
@@ -77,17 +77,17 @@ project "royuengine"
 
 		filter "configurations:Debug"
 			defines "RY_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "RY_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "RY_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 
@@ -95,6 +95,7 @@ project "sandbox"
 	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin_int/" .. outputdir .. "/%{prj.name}")
@@ -118,7 +119,6 @@ project "sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -128,15 +128,15 @@ project "sandbox"
 
 		filter "configurations:Debug"
 			defines "RY_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "RY_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "RY_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
